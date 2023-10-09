@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-------------
+    Css Style
+    -------------->
+    <style>
+      main {
+        text-align: center;
+        width: 100%;
+      }
+
+      .klasse-1 {
+        background-color: lightblue;
+        display: flex;
+        padding: 10px;
+      }
+      .klasse-2 {
+        display: flex;
+        background-color: lightseagreen;
+        padding: 10px;
+      }
+      .klasse-3 {
+        display: flex;
+        background-color: lightcoral;
+        padding: 10px;
+      }
+      .klasse-1 p {
+        width: 50%;
+        margin-left: 50%;
+      }
+      .klasse-2 p {
+        width: 50%;
+        margin-left: 50%;
+      }
+      .klasse-3 p {
+        width: 50%;
+        margin-left: 50%;
+      }
+      .klasse-1 img {
+        max-width: 500px;
+        max-height: 500px;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px gray;
+      }
+      .klasse-2 img {
+        max-width: 500px;
+        max-height: 500px;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px gray;
+      }
+      .klasse-3 img {
+        max-width: 500px;
+        max-height: 500px;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px gray;
+      }
+      .styleKlasse {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-------------
+    Divs für die ausgabe von 
+    Javascript in Html
+    -------------->
+
+    <!-----------------------------------
+    Main für den Hauptinhalt Bilder und Text
+    --------------------------------------->
+    <div id="element-INDEX">
+      <!-------------------------
+    Überschrift
+    ------------------------------>
+      <h3>Überschrift</h3>
+
+      <!-----------------------------------
+    Div für den Hauptinhalt Bilder und Text
+    --------------------------------------->
+      <div></div>
+      <!-------------------------
+    Buttons für den Bilderwechsel
+    ------------------------------>
+      <div>
+        <button onclick="zuruck()">Zurück</button>
+        <button onclick="weiter()">Weiter</button>
+      </div>
+      <!-------------------------
+   Div zum verstecken der Inhalte
+    ------------------------------>
+      <div></div>
+    </div>
+    <!---------
+        JavaScript... Start
+        --------->
+    <script>
+      /************************************
+       * Array mit den Daten für den Inhalt
+       ************************************/
+      const daten = [
+        // Erster Eintrag
+        {
+          klasse: "klasse-1",
+          bild: "https://img.freepik.com/free-photo/creative-reels-composition_23-2149711507.jpg?size=626&ext=jpg&uid=R103053098&ga=GA1.2.611708852.1684318471&semt=sph",
+          text: "Die ersten Mobiltelefone mit Smartphone-Funktionen gab es bereits in den späten 1990er Jahren. Der Begriff Smartphone wurde erstmals im Jahr 1999 von dem schwedischen Unternehmen Ericsson geprägt. Die Einführung des iPhones im Jahr 2007 durch Apple führte zu einem Umbruch im Mobiltelefon-Markt, und die Smartphones gewannen nennenswerte Marktanteile. Heute sind die meisten verkauften Mobiltelefone Smartphones.",
+        },
+        // Zweiter Eintrag
+        {
+          klasse: "klasse-2",
+          bild: "https://img.freepik.com/free-photo/young-woman-working-her-laptop-home_23-2149029652.jpg?size=626&ext=jpg&uid=R103053098&ga=GA1.2.611708852.1684318471&semt=sph",
+          text: "In einem flachen rechteckigen Gehäuse ist auf der Oberseite eine Tastatur flächenbündig integriert. Diese weist im alphanumerischen Bereich üblicherweise den von der ISO 9241-410:2012-12 für effizientes Tippen geforderten Tastenmittenabstand von 19 mm auf und hat eine Tastaturbelegung gemäß ISO/IEC 9995-2, z. B. QWERTZ für den deutschsprachigen Anwendungsbereich.",
+        },
+        // Dritter Eintrag
+        {
+          klasse: "klasse-3",
+          bild: "https://img.freepik.com/free-photo/red-mini-coupe-parked-port-front-view-ship-seaside_114579-5195.jpg?size=626&ext=jpg&uid=R103053098&ga=GA1.2.611708852.1684318471&semt=sph",
+          text: "Die Dr. Ing. h.c. F. Porsche Aktiengesellschaft (Porsche AG) ist ein deutscher Kraftfahrzeughersteller mit Sitz in Stuttgart-Zuffenhausen. Ursprung des Unternehmens ist ein 1931 von Ferdinand Porsche in Stuttgart gegründetes Konstruktionsbüro, das nach 1945 in einer Automobilfabrik aufging, die vor allem Sportwagen produzierte.",
+        },
+        // Vierter Eintrag
+        {
+          klasse: "klasse-1",
+          bild: "https://img.freepik.com/free-photo/beautiful-woman-holds-stylish-black-bag-fashionable-girl-glamour-stylish-concept-art-woman-after-shopping-unrecognizable-female_186202-4476.jpg?size=626&ext=jpg&uid=R103053098&ga=GA1.2.611708852.1684318471&semt=ais",
+          text: "Gucci [ˈɡutʃi] ist ein italienisches Modeunternehmen für Damen-, Herren- und Kinderbekleidung sowie Accessoires im Luxusgütersegment mit weltweiten Einzelhandelsgeschäften. Die Guccio Gucci S.p.A. gehört seit 2004 vollständig zum französischen Luxusgüterkonzern Kering, in dem weitere Luxusmarken gebündelt sind.",
+        },
+        // Fünfter Eintrag
+        {
+          klasse: "klasse-2",
+          bild: "https://img.freepik.com/free-photo/pizza-with-salami-tomatoes-olives-cheese-dough-with-whole-wheat-flour-italian-food_2829-6855.jpg?size=626&ext=jpg&uid=R103053098&ga=GA1.2.611708852.1684318471&semt=sph",
+          text: "Eine Pizza (Aussprache [ˈpɪtsa], ital. [ˈpitːsa], deutscher Plural: die Pizzas oder die Pizzen[1]) ist ein vor dem Backen würzig belegtes Fladenbrot aus einfachem Hefeteig aus der italienischen Küche. Die heutige international verbreitete Variante mit Tomatensauce und Käse als Basis stammt vermutlich aus Neapel. 2017 wurde die neapolitanische Kunst des Pizzabäckers (Art of Neapolitan ‘Pizzaiuolo’) von der UNESCO in die repräsentative Liste des immateriellen Kulturerbes der Menschheit aufgenommen.",
+        },
+        // Sechster Eintrag
+        {
+          klasse: "klasse-3",
+          bild: "https://img.freepik.com/free-photo/beautiful-tropical-beach-sea_74190-6803.jpg?size=626&ext=jpg&uid=R103053098&ga=GA1.2.611708852.1684318471&semt=sph",
+          text: "Die Karibik ist eine Region im westlichen, tropischen Teil des Atlantischen Ozeans nördlich des Äquators. Als Teil des mittelamerikanischen Subkontinents besteht sie aus den am und im Karibischen Meer gelegenen Inseln und Inselgruppen und dem Meeresgebiet zwischen ihnen. Am Westende reicht die Karibik in den Golf von Mexiko.",
+        },
+      ];
+
+      /* * * * * * * * * * * * * * * * * * * * *
+       * Diese Funktion erzeugt einen Kasten,
+       * in dem ein Bild und ein Text liegen
+       * * * * * * * * * * * * * * * * * * * * */
+      function hauptKasten(styleKlasse, bildLink, textBeschreibung) {
+        return (
+          `<div class = "${styleKlasse}">` +
+          bildKasten(bildLink) +
+          textKasten(textBeschreibung) +
+          "</div>"
+        );
+      }
+      /* * * * * * * * * * * * * * * * * * * * *
+       * Diese Funktion erzeugt das Bild
+       * * * * * * * * * * * * * * * * * * * * */
+      function bildKasten(img) {
+        return `<div><img src = "${img}"></div>`;
+      }
+      /* * * * * * * * * * * * * * * * * * * * *
+       * Diese Funktion erzeugt den Text
+       * * * * * * * * * * * * * * * * * * * * */
+      function textKasten(bText) {
+        return `<div><p>${bText}</p></div>`;
+      }
+      /* * * * * * * * * * * * * * * * * * * * *
+       * Verbindung zum HTML-Element mit der id
+       * "inhalt" aufbauen
+       * * * * * * * * * * * * * * * * * * * * */
+      const verbinden = document.getElementById("element-INDEX");
+      const bildBoxVerbindung = document.getElementById("container-bilder");
+      /* * * * * * * * * * * * * * * * * * * * *
+       * In der Schleife wird das Array mit der
+       * Bezeichnung "daten" durchlaufen. Jeder
+       * Eintrag des Arrays ist ein JSON-Objekt.
+       * Ich muss also die einzelnen Keys das
+       * jeweiligen Objeks als Parameterwert
+       * an die Funktion "kastenAnlegen"
+       * weitergeben und das Ergebnis an das
+       * HTML-Element hinzufügen.
+       * * * * * * * * * * * * * * * * * * * * */
+      for (let loop = 0; loop < daten.length; loop++)
+        verbinden.innerHTML += hauptKasten(
+          daten[loop].klasse,
+          daten[loop].bild,
+          daten[loop].text
+        );
+    </script>
+    <!---------
+        JavaScript... Ende
+        --------->
+  </body>
+</html>
